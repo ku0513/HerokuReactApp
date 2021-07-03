@@ -1,7 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import * as microsoftTeams from "@microsoft/teams-js";
 
 function App() {
+
+  microsoftTeams.initialize();
+  // const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
+  const baseUrl = `https://${window.location.hostname}`;
+  console.log(baseUrl);
+
+  microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
+
+    microsoftTeams.settings.setSettings({
+      suggestedDisplayName: "Heroku ReactApp",
+      entityId: "ReactApp",
+      contentUrl: baseUrl,
+      websiteUrl: baseUrl,
+      removeUrl: null
+    });
+    saveEvent.notifySuccess();
+  });
+
+  microsoftTeams.settings.setValidityState(true);
   return (
     <div className="App">
       <header className="App-header">
