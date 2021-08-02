@@ -27,15 +27,9 @@ function App() {
     saveEvent.notifySuccess();
   });
 
-  const userNameFunc = (userName) => setUserPrincipalName(userName)
-  const userIdFunc = (userId) => setUserObjectId(userId);
-
   microsoftTeams.getContext((context) => {
     console.log(context.userObjectId)
-    let userName = context.userPrincipalName;
-    let userId = context.userObjectId;
-    userNameFunc(userName);
-    userIdFunc(userId);
+    setUserPrincipalName(context.userPrincipalName)
   });
 
   // setUserObjectId(`aaaa`);
