@@ -21,6 +21,11 @@ function App() {
     saveEvent.notifySuccess();
   });
 
+  microsoftTeams.getContext((context) => {
+    console.log(context.userPrincipalName);
+    console.log(context.userObjectId);
+  });
+
   microsoftTeams.settings.setValidityState(true);
   return (
     <div className="App">
