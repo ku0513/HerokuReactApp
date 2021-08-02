@@ -1,14 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import * as microsoftTeams from "@microsoft/teams-js";
+import {useState} from "react"
+
 
 function App() {
 
   microsoftTeams.initialize();
   // const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
   const baseUrl = `https://${window.location.hostname}`;
-  let userPrincipalName;
-  let userObjectId;
+  const [userPrincipalName, setUserPrincipalName] = useState(`userName`);
+  const [userObjectId, setUserObjectId] = useState(`userId`);
   console.log(baseUrl);
 
   microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
@@ -23,8 +25,8 @@ function App() {
     saveEvent.notifySuccess();
 
     microsoftTeams.getContext((context) => {
-      userPrincipalName = context.userPrincipalName;
-      userObjectId = context.userObjectId;
+      setUserObjectId(context.userObjectId);
+      setUserPrincipalName(context.userPrincipalName);
       console.log(userPrincipalName);
       console.log(userObjectId);
     });
@@ -47,9 +49,9 @@ function App() {
         >
           Learn React with Heroku
           <br></br>
-          userObjectID {userObjectId}
+          userObjectID: {userObjectId}
           <br></br>
-          userPrincipalName {userPrincipalName}
+          userPrincipalName: {userPrincipalName}
         </a>
       </header>
     </div>
