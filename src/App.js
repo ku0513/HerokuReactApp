@@ -7,7 +7,7 @@ function App() {
   microsoftTeams.initialize();
   // const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
   const baseUrl = `https://${window.location.hostname}`;
-  let userPrincipalName
+  let userPrincipalName;
   let userObjectId;
   console.log(baseUrl);
 
@@ -45,7 +45,9 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React with Heroku
+          <br></br>
           userObjectID {userObjectId}
+          <br></br>
           userPrincipalName {userPrincipalName}
         </a>
       </header>
