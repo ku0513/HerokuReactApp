@@ -9,8 +9,10 @@ function App() {
   microsoftTeams.initialize();
   // const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
   const baseUrl = `https://${window.location.hostname}`;
-  const [userPrincipalName, setUserPrincipalName] = useState(`userName`);
-  const [userObjectId, setUserObjectId] = useState(`userId`);
+  const [userPrincipalNameState, setUserPrincipalName] = useState(`userName`);
+  const [userObjectIdState, setUserObjectId] = useState(`userId`);
+  // let userName;
+  // let userId;
   console.log(baseUrl);
 
   microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
@@ -25,11 +27,18 @@ function App() {
     saveEvent.notifySuccess();
   });
 
+  const userNameFunc = (userName) => setUserPrincipalName(userName)
+  const userIdFunc = (userId) => setUserObjectId(userId);
+
   microsoftTeams.getContext((context) => {
     console.log(context.userObjectId)
-    setUserObjectId(`id`);
-    setUserPrincipalName(`name`);
+    let userName = context.userPrincipalName;
+    let userId = context.userObjectId;
+    userNameFunc(userName);
+    userIdFunc(userId);
   });
+
+  // setUserObjectId(`aaaa`);
 
   microsoftTeams.settings.setValidityState(true);
   return (
@@ -47,9 +56,9 @@ function App() {
         >
           Learn React with Heroku
           <br></br>
-          userObjectID: {userObjectId}
+          userObjectID: {userObjectIdState}
           <br></br>
-          userPrincipalName: {userPrincipalName}
+          userPrincipalName: {userPrincipalNameState}
         </a>
       </header>
     </div>
