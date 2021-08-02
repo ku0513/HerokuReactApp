@@ -9,8 +9,8 @@ function App() {
   microsoftTeams.initialize();
   // const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
   const baseUrl = `https://${window.location.hostname}`;
-  const [userPrincipalName, setUserPrincipalName] = useState(`userName`);
-  const [userObjectId, setUserObjectId] = useState(`userId`);
+  const [userPrincipalName, setUserPrincipalName] = useState();
+  const [userObjectId, setUserObjectId] = useState();
   console.log(baseUrl);
 
   microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
