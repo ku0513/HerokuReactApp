@@ -9,8 +9,8 @@ function App() {
   microsoftTeams.initialize();
   // const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
   const baseUrl = `https://${window.location.hostname}`;
-  const [userPrincipalName, setUserPrincipalName] = useState();
-  const [userObjectId, setUserObjectId] = useState();
+  const [userPrincipalName, setUserPrincipalName] = useState(`userName`);
+  const [userObjectId, setUserObjectId] = useState(`userId`);
   console.log(baseUrl);
 
   microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
@@ -25,10 +25,11 @@ function App() {
     saveEvent.notifySuccess();
   });
 
-  microsoftTeams.getContext((context) => {
-    setUserObjectId(context.userObjectId);
-    setUserPrincipalName(context.userPrincipalName);
-  });
+  // microsoftTeams.getContext((context) => {
+  //   console.log(context.userObjectId)
+  //   setUserObjectId(context.userObjectId);
+  //   setUserPrincipalName(context.userPrincipalName);
+  // });
 
   microsoftTeams.settings.setValidityState(true);
   return (
