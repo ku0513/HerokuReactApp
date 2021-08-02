@@ -7,6 +7,8 @@ function App() {
   microsoftTeams.initialize();
   // const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
   const baseUrl = `https://${window.location.hostname}`;
+  let userPrincipalName
+  let userObjectId;
   console.log(baseUrl);
 
   microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
@@ -22,8 +24,10 @@ function App() {
   });
 
   microsoftTeams.getContext((context) => {
-    console.log(context.userPrincipalName);
-    console.log(context.userObjectId);
+    userPrincipalName = context.userPrincipalName;
+    userObjectId = context.userObjectId;
+    console.log(userPrincipalName);
+    console.log(userObjectId);
   });
 
   microsoftTeams.settings.setValidityState(true);
@@ -41,6 +45,8 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React with Heroku
+          userObjectID {userObjectId}
+          userPrincipalName {userPrincipalName}
         </a>
       </header>
     </div>
