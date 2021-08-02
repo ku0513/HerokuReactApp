@@ -25,11 +25,11 @@ function App() {
     saveEvent.notifySuccess();
   });
 
-  // microsoftTeams.getContext((context) => {
-  //   console.log(context.userObjectId)
-  //   setUserObjectId(context.userObjectId);
-  //   setUserPrincipalName(context.userPrincipalName);
-  // });
+  microsoftTeams.getContext((context) => {
+    console.log(context.userObjectId)
+    setUserObjectId(`id`);
+    setUserPrincipalName(`name`);
+  });
 
   microsoftTeams.settings.setValidityState(true);
   return (
