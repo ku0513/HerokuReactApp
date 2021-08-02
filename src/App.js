@@ -29,7 +29,7 @@ function App() {
 
   microsoftTeams.getContext((context) => {
     console.log(context.userObjectId)
-    setUserPrincipalName(context.userPrincipalName)
+    setUserPrincipalName(`test`)
   });
 
   // setUserObjectId(`aaaa`);
