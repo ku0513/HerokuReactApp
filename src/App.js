@@ -21,14 +21,15 @@ function App() {
       removeUrl: null
     });
     saveEvent.notifySuccess();
+
+    microsoftTeams.getContext((context) => {
+      userPrincipalName = context.userPrincipalName;
+      userObjectId = context.userObjectId;
+      console.log(userPrincipalName);
+      console.log(userObjectId);
+    });
   });
 
-  microsoftTeams.getContext((context) => {
-    userPrincipalName = context.userPrincipalName;
-    userObjectId = context.userObjectId;
-    console.log(userPrincipalName);
-    console.log(userObjectId);
-  });
 
   microsoftTeams.settings.setValidityState(true);
   return (
