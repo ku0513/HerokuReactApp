@@ -28,8 +28,6 @@ function App() {
   microsoftTeams.getContext((context) => {
     setUserObjectId(context.userObjectId);
     setUserPrincipalName(context.userPrincipalName);
-    console.log(userPrincipalName);
-    console.log(userObjectId);
   });
 
   microsoftTeams.settings.setValidityState(true);
